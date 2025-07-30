@@ -8,7 +8,7 @@ request.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error)
-  }
+  },
 )
 
 request.interceptors.response.use(
@@ -17,7 +17,7 @@ request.interceptors.response.use(
   },
   function (error) {
     return Promise.reject(error)
-  }
+  },
 )
 
 export default request
