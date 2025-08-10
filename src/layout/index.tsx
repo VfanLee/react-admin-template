@@ -1,74 +1,32 @@
-import React, { useState } from 'react'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons'
-import { Button, Layout, Menu, theme } from 'antd'
-import { Outlet } from 'react-router-dom'
-
-const { Header, Sider, Content } = Layout
+import React, { useEffect } from 'react'
+import { Layout } from 'antd'
+import { useLocation } from 'react-router-dom'
+import { useUser } from '@/stores/userStore'
+import { useMenu } from '@/stores/menuStore'
+import { LayoutSider, LayoutHeader, LayoutContent } from './components'
 
 const BaseLayout: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false)
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken()
+  const location = useLocation()
+  const { user, isAuthenticated } = useUser()
+  const { generateMenus, updateSelectedKeys } = useMenu()
+
+  // 当用户状态或位置改变时重新生成菜单
+  useEffect(() => {
+    generateMenus(user?.role, isAuthenticated)
+  }, [user?.role, isAuthenticated, generateMenus])
+
+  // 当路径改变时更新选中状态
+  useEffect(() => {
+    updateSelectedKeys(location.pathname)
+  }, [location.pathname, updateSelectedKeys])
 
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
-      </Sider>
+    <Layout style={{ height: '100%' }}>
+      <LayoutSider />
 
       <Layout>
-        <Header>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
-
-        <Content
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <Outlet />
-        </Content>
+        <LayoutHeader />
+        <LayoutContent />
       </Layout>
     </Layout>
   )

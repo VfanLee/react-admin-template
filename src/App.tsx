@@ -1,11 +1,12 @@
-import 'normalize.css'
-import '@/styles/index.scss'
-
-import { RouterProvider } from 'react-router-dom'
-import router from './router'
+import UserInitializer from '@/components/UserInitializer'
+import AppRouter from '@/components/AppRouter'
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <UserInitializer>
+      <AppRouter />
+    </UserInitializer>
+  )
 }
 
 export default App

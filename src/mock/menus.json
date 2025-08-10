@@ -1,0 +1,44 @@
+{
+  "menus": [
+    {
+      "id": "1",
+      "path": "/home",
+      "title": "首页",
+      "icon": "HomeOutlined",
+      "order": 1,
+      "roles": ["admin", "user", "manager"],
+      "requireAuth": true,
+      "parentId": null
+    },
+    {
+      "id": "2",
+      "path": "/about",
+      "title": "关于",
+      "icon": "InfoCircleOutlined",
+      "order": 2,
+      "roles": ["admin"],
+      "requireAuth": true,
+      "parentId": null
+    },
+    {
+      "id": "3",
+      "path": "/user-management",
+      "title": "用户管理",
+      "icon": "UserOutlined",
+      "order": 3,
+      "roles": ["admin"],
+      "requireAuth": true,
+      "parentId": null
+    },
+    {
+      "id": "4",
+      "path": "/settings",
+      "title": "系统设置",
+      "icon": "SettingOutlined",
+      "order": 4,
+      "roles": ["admin", "manager"],
+      "requireAuth": true,
+      "parentId": null
+    }
+  ]
+}
