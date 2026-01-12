@@ -41,8 +41,11 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
     )
   }
 
-  // 如果未认证且不在登录页面，重定向到登录页
-  if (!isAuthenticated && location.pathname !== '/login') {
+  // 定义不需要认证的页面白名单
+  const publicPaths = ['/login', '/test']
+
+  // 如果未认证且不在白名单页面，重定向到登录页
+  if (!isAuthenticated && !publicPaths.includes(location.pathname)) {
     return <Navigate to="/login" state={{ from: location }} replace />
   }
 

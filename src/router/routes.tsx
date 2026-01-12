@@ -1,4 +1,3 @@
-// routes.ts
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
@@ -8,6 +7,7 @@ import Layout from '@/layout'
 import lazyLoad from '@/components/lazyLoad'
 
 import Login from '@/pages/login'
+import Test from '@/pages/test'
 import NotFound from '@/pages/NotFound'
 const Home = React.lazy(() => import('@/pages/Home.js'))
 const About = React.lazy(() => import('@/pages/About.js'))
@@ -18,20 +18,30 @@ const ZustandTest = React.lazy(() => import('@/pages/ZustandTest.tsx'))
 // 定义用户角色类型
 export type UserRole = 'admin' | 'user' | 'guest' | 'manager'
 
+// 路由元信息
+export interface RouteMeta {
+  title?: string // 菜单显示名称
+  icon?: React.ReactNode // 菜单图标
+  hideInMenu?: boolean // 是否在菜单中隐藏
+  order?: number // 排序
+  roles?: UserRole[] // 允许访问的角色列表，为空表示所有角色都可访问
+  requireAuth?: boolean // 是否需要登录
+}
+
 // 扩展路由配置类型，添加菜单元数据和权限控制
-export interface ExtendedRouteObject extends Omit<RouteObject, 'children'> {
+export type ExtendedRouteObject = RouteObject & {
+  meta?: RouteMeta
   children?: ExtendedRouteObject[]
-  meta?: {
-    title?: string // 菜单显示名称
-    icon?: React.ReactNode // 菜单图标
-    hideInMenu?: boolean // 是否在菜单中隐藏
-    order?: number // 排序
-    roles?: UserRole[] // 允许访问的角色列表，为空表示所有角色都可访问
-    requireAuth?: boolean // 是否需要登录
-  }
 }
 
 export const routes: ExtendedRouteObject[] = [
+  {
+    path: '/test',
+    element: <Test />,
+    meta: {
+      hideInMenu: true,
+    },
+  },
   {
     path: '/login',
     element: <Login />,
