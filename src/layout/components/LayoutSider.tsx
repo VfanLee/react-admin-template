@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout, Menu } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { useMenu } from '@/stores/menuStore'
+import { useMenu } from '@/store/menuStore'
 import Logo from './Logo'
 
 const { Sider } = Layout

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Layout } from 'antd'
 import { useLocation } from 'react-router-dom'
-import { useUser } from '@/stores/userStore'
-import { useMenu } from '@/stores/menuStore'
+import { useUser } from '@/store/userStore'
+import { useMenu } from '@/store/menuStore'
 import { LayoutSider, LayoutHeader, LayoutContent } from './components'
 
 const BaseLayout: React.FC = () => {

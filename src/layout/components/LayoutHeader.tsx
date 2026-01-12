@@ -3,8 +3,8 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined, LogoutOutlined } fr
 import { Button, Layout, Dropdown, Avatar, Space, Select } from 'antd'
 import type { MenuProps as AntdMenuProps } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { useUser } from '@/stores/userStore'
-import { useMenu } from '@/stores/menuStore'
+import { useUser } from '@/store/userStore'
+import { useMenu } from '@/store/menuStore'
 import { mockUsers } from '@/types/user'
 import type { UserRole } from '@/router/routes'
 

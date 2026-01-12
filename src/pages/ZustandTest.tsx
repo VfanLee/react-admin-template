@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button, Space, Typography, Tag } from 'antd'
-import { useUser } from '@/stores/userStore'
-import { useMenu } from '@/stores/menuStore'
+import { useUser } from '@/store/userStore'
+import { useMenu } from '@/store/menuStore'
 
 const { Title, Text } = Typography
 

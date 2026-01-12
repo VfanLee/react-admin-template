@@ -1,7 +1,7 @@
 import type { UserRole } from '@/router/routes'
 
 // 重新导出 UserInfo 接口
-export type { UserInfo } from '@/stores/userStore'
+export type { UserInfo } from '@/store/userStore'
 
 // 模拟用户数据（保留用于演示）
 export const mockUsers = [

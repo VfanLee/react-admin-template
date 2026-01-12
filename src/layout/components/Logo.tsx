@@ -34,7 +34,7 @@ const Logo: React.FC<LogoProps> = ({ collapsed }) => {
             color: '#fff',
           }}
         >
-          管理后台
+          Vfan Admin
         </span>
       )}
     </div>

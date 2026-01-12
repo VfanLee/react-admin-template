@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { Spin } from 'antd'
-import { useUser } from '@/stores/userStore'
+import { useUser } from '@/store/userStore'
 
 interface AuthGuardProps {
   children: React.ReactNode

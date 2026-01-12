@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useUserStore } from '@/stores/userStore'
+import { useUserStore } from '@/store/userStore'
 
 interface UserInitializerProps {
   children: React.ReactNode

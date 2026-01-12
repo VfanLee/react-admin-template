@@ -25,7 +25,6 @@ interface UserState {
 
   // 操作方法
   login: (loginData: LoginRequest) => Promise<boolean>
-  quickLogin: (userInfo: UserInfo) => void
   logout: () => Promise<void>
   switchRole: (role: UserRole) => void
   initializeUser: () => Promise<void>
@@ -146,24 +145,6 @@ export const useUserStore = create<UserState>()(
           }
         },
 
-        // 快速登录（用于演示，直接设置用户信息）
-        quickLogin: (userInfo: UserInfo) => {
-          const token = `quick_token_${userInfo.id}_${Date.now()}`
-
-          localStorage.setItem('userInfo', JSON.stringify(userInfo))
-          localStorage.setItem('token', token)
-
-          set(
-            {
-              user: userInfo,
-              isAuthenticated: true,
-              loading: false,
-            },
-            false,
-            'quickLogin',
-          )
-        },
-
         // 登出
         logout: async () => {
           try {
@@ -232,7 +213,6 @@ export const useUser = () => {
     isAuthenticated: store.isAuthenticated,
     loading: store.loading,
     login: store.login,
-    quickLogin: store.quickLogin,
     logout: store.logout,
     switchRole: store.switchRole,
     initializeUser: store.initializeUser,
